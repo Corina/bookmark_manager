@@ -1,7 +1,4 @@
-
-
-
-feature 'ability to see boomark links' do
+feature 'ability to see bookmark links' do
   scenario 'user visits home page' do
     Link.create(url: 'http://www.makersacademy.com', title: 'Linky')
     visit('/links')

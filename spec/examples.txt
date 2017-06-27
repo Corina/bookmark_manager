@@ -1,0 +1,4 @@
+example_id                                  | status | run_time        |
+------------------------------------------- | ------ | --------------- |
+./spec/features/creating_links_spec.rb[1:1] | passed | 0.02435 seconds |
+./spec/features/seeing_links_spec.rb[1:1]   | passed | 0.05352 seconds |

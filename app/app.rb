@@ -1,6 +1,6 @@
 ENV["RACK_ENV"] ||= "development"
 require 'sinatra/base'
-require_relative './models/link.rb'
+require_relative 'models/link'
 
 class App < Sinatra::Base
   
@@ -40,10 +40,5 @@ class App < Sinatra::Base
   end
   
   run! if app_file == $0
-  <<<<<<< HEAD
   
-  
-  =======
-  
-  >>>>>>> parent of 4e6a4c1... Adding database cleaner
 end
