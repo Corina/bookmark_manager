@@ -1,5 +1,4 @@
 
-
 feature 'ability to add a link' do
   scenario 'user adds a link' do
     visit('/links/new')
