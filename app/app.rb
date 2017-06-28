@@ -34,7 +34,6 @@ class App < Sinatra::Base
   end
   
   post '/create' do
-    p params
     Link.create(url: params[:url], title: params[:title])
     redirect '/links'
   end
