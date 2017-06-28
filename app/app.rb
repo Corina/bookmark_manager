@@ -1,24 +1,12 @@
 ENV["RACK_ENV"] ||= "development"
+
 require 'sinatra/base'
-require_relative 'models/link'
+require_relative 'data_mapper_setup'
 
 class App < Sinatra::Base
   
   enable :sessions
   
-  configure do
-    # Don't log them. We'll do that ourself
-    set :dump_errors, false
-    
-    # Don't capture any errors. Throw them up the stack
-    set :raise_errors, true
-    
-    # Disable internal middleware for presenting errors
-    # as useful HTML pages
-    set :show_exceptions, false
-  end
-  
-  #set :views, Proc.new{File.join(root, "..", "views")}
   
   get '/' do
     
@@ -34,7 +22,10 @@ class App < Sinatra::Base
   end
   
   post '/create' do
-    Link.create(url: params[:url], title: params[:title])
+    link = Link.new(url: params[:url], title: params[:title])
+    tag = Tag.first_or_create(name: params[:tags])
+    link.tags << tag
+    link.save
     redirect '/links'
   end
   

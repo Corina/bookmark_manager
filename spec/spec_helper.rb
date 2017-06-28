@@ -4,8 +4,10 @@ require 'capybara/rspec'
 require 'capybara'
 require 'rspec'
 require 'database_cleaner'
-require './app/models/link'
+require './app/data_mapper_setup'
 require './app/app'
+
+
 
 Capybara.app = App
 
