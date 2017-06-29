@@ -1,12 +1,16 @@
 feature 'adding tag' do
   scenario 'adding a single tag to a link' do
-    visit '/links/new'
-    fill_in 'url', with: 'https://www.google.com/'
-    fill_in 'title', with: 'Google'
-    fill_in 'tags', with: 'search engine'
-    click_on 'Submit'
+    adding_single_tag
     
     link = Link.first
-    expect(link.tags.map(&:name)).to include 'search engine'
+    expect(link.tags.map(&:name)).to include 'search'
   end
+  
+  scenario 'adding two tags' do
+    adding_two_tags
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('search engine').and include('news')
+  end
+  
+  
 end

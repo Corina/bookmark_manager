@@ -6,6 +6,7 @@ require 'rspec'
 require 'database_cleaner'
 require './app/data_mapper_setup'
 require './app/app'
+require 'web_helper'
 
 
 
