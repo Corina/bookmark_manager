@@ -4,36 +4,33 @@ require 'sinatra/base'
 require_relative 'data_mapper_setup'
 
 class App < Sinatra::Base
-  
+
   enable :sessions
   set :session_secret, 'super secret'
-  
+
   get '/' do
-    
+
   end
-  
+
   get '/links' do
     @links = Link.all
-    @email = session[:user_email]
     erb :'links/index'
   end
-  
+
   get '/links/new' do
     erb :'links/new'
   end
-  
+
   get '/signup' do
     erb :'signup/index'
   end
-  
+
   post '/signup' do
     user = User.create(email: params[:email], password: params[:password])
-    signup_user = User.first(email: params[:email])
-    session[:user_email] = signup_user.email
-    session[:user_id] = signup_user.id
+    session[:user_id] = user.id
     redirect '/links'
   end
-  
+
   post '/create' do
     link = Link.new(url: params[:url], title: params[:title])
     params[:tags].split(", ").each do |tag|
@@ -42,21 +39,21 @@ class App < Sinatra::Base
     link.save
     redirect '/links'
   end
-  
-  
+
+
   get '/tags/:name' do
     tag = Tag.first(name: params[:name])
     @links = tag ? tag.links : []
     erb :'links/index'
   end
-  
+
   helpers do
     def current_user
-      @current_user ||= User.first(session[:user_id])
+      @current_user ||= User.get(session[:user_id])
     end
   end
-  
-  
+
+
   run! if app_file == $0
-  
+
 end
