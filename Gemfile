@@ -9,6 +9,7 @@ gem 'dm-postgres-adapter'
 gem 'dm-migrations'
 gem 'sinatra'
 gem 'thin'
+gem 'bcrypt'
 
 
 group :test do
