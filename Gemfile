@@ -10,6 +10,7 @@ gem 'dm-migrations'
 gem 'sinatra'
 gem 'thin'
 gem 'bcrypt'
+gem 'sinatra-flash'
 
 
 group :test do
