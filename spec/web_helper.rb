@@ -14,3 +14,10 @@ def adding_two_tags
   fill_in 'tags', with: 'search engine, news'
   click_on 'Submit'
 end
+
+def sign_up
+  visit('/signup')
+  fill_in('email', with: 'johnsmith@aol.com')
+  fill_in('password', with: 'password123')
+  click_on('Sign up')
+end
